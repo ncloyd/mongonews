@@ -1,4 +1,5 @@
 var express = require("express");
+var exphbs = require("express-handlebars");
 var bodyParser = require("body-parser");
 var logger = require("morgan");
 var mongoose = require("mongoose");
@@ -10,10 +11,12 @@ var axios = require("axios");
 var cheerio = require("cheerio");
 
 // Require all models
-var db = require("./models");
+// var db = require("./models");
 
 // Initialize Express
 var app = express();
+app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+app.set('view engine', 'handlebars');
 
 // Configure middleware
 
@@ -27,9 +30,7 @@ app.use(express.static("public"));
 // By default mongoose uses callbacks for async queries, we're setting it to use promises (.then syntax) instead
 // Connect to the Mongo DB
 mongoose.Promise = Promise;
-mongoose.connect("mongodb://localhost/articles", {
-  useMongoClient: true
-});
+mongoose.connect("mongodb://localhost/articles");
 
 // Routes
 
@@ -101,5 +102,5 @@ app.get("/articles/:id", function(req, res) {
 
 // Start the server
 app.listen(3000, function() {
-  console.log("App running on port " + PORT + "!");
+  console.log("App running on port 3000!");
 });

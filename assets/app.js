@@ -10,10 +10,10 @@ module.exports = {
 //on click functions for nav buttons
 //on click function to save article
 
-function displayResults(articles) {
-	$(".articles").empty();
+// function displayResults(articles) {
+// 	$(".articles").empty();
 
-	articles.forEach(function(article) {
-		$(".articles").append()
-	})
-}
+// 	articles.forEach(function(article) {
+// 		$(".articles").append()
+// 	})
+// }
